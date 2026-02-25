@@ -297,7 +297,7 @@ func GenerateReport(assessment *Assessment) string {
 
 	report += "=== Zero Trust Assessment Report ===\n\n"
 	report += "Assessment Date: " + assessment.AssessmentDate.Format("2006-01-02 15:04:05") + "\n"
-	report += "Overall Score: " + string(rune(int(assessment.OverallScore*100)+48)) + "%\n"
+	report += "Overall Score: " + fmt.Sprintf("%.0f%%", assessment.OverallScore*100) + "%\n"
 	report += "Compliance: " + assessment.ComplianceStatus + "\n\n"
 
 	report += "Principle Checks:\n"
