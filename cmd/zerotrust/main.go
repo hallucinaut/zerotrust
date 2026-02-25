@@ -67,7 +67,7 @@ Commands:
 Examples:
   zerotrust assess config.json
   zerotrust validate policies.yaml
-`, "zerotrust")
+`,)
 }
 
 func assessZeroTrust(configFile string) {

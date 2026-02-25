@@ -3,6 +3,7 @@ package validate
 
 import (
 	"math"
+	"fmt"
 	"time"
 )
 
@@ -307,7 +308,7 @@ func GenerateReport(assessment *Assessment) string {
 		} else if principle.Score < 0.5 {
 			status = "✗"
 		}
-		report += "  [" + string(rune(i+49)) + "] " + status + " " + string(principle.Principle) + " (" + string(principle.Score*100+48) + "%)\n"
+		report += "  [" + string(rune(i+49)) + "] " + status + " " + string(principle.Principle) + " (" + fmt.Sprintf("%.0f", principle.Score*100) + "%)\n"
 	}
 
 	if len(assessment.Recommendations) > 0 {

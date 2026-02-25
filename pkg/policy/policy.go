@@ -130,16 +130,21 @@ func evaluateStringCondition(condition Condition, value string) bool {
 }
 
 // evaluateTimeCondition evaluates time condition.
-func evaluateTimeCondition(condition Condition, time time.Time) bool {
+func evaluateTimeCondition(condition Condition, currentTime time.Time) bool {
+	t, ok := condition.Value.(time.Time)
+	if !ok {
+		return false
+	}
+	
 	switch condition.Operator {
 	case ">":
-		return time.After(condition.Value.(time.Time))
+		return !currentTime.Before(t)
 	case "<":
-		return time.Before(condition.Value.(time.Time))
+		return currentTime.Before(t)
 	case ">=":
-		return !time.Before(condition.Value.(time.Time))
+		return currentTime.After(t) || currentTime.Equal(t)
 	case "<=":
-		return !time.After(condition.Value.(time.Time))
+		return !currentTime.After(t)
 	}
 
 	return false
