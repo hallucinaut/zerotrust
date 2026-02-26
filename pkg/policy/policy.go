@@ -9,32 +9,32 @@ import (
 type PolicyType string
 
 const (
-	TypeAccessPolicy     PolicyType = "access"
-	TypeNetworkPolicy    PolicyType = "network"
-	TypeDataPolicy       PolicyType = "data"
-	TypeIdentityPolicy   PolicyType = "identity"
-	TypeDevicePolicy     PolicyType = "device"
+	TypeAccessPolicy   PolicyType = "access"
+	TypeNetworkPolicy  PolicyType = "network"
+	TypeDataPolicy     PolicyType = "data"
+	TypeIdentityPolicy PolicyType = "identity"
+	TypeDevicePolicy   PolicyType = "device"
 )
 
 // Policy represents a zero trust policy.
 type Policy struct {
-	ID            string
-	Name          string
-	Type          PolicyType
-	Enabled       bool
-	Priority      int
-	Conditions    []Condition
-	Actions       []Action
-	CreatedAt     time.Time
-	UpdatedAt     time.Time
+	ID         string
+	Name       string
+	Type       PolicyType
+	Enabled    bool
+	Priority   int
+	Conditions []Condition
+	Actions    []Action
+	CreatedAt  time.Time
+	UpdatedAt  time.Time
 }
 
 // Condition represents a policy condition.
 type Condition struct {
-	Field      string
-	Operator   string
-	Value      interface{}
-	Effect     string
+	Field    string
+	Operator string
+	Value    interface{}
+	Effect   string
 }
 
 // Action represents a policy action.
@@ -135,7 +135,7 @@ func evaluateTimeCondition(condition Condition, currentTime time.Time) bool {
 	if !ok {
 		return false
 	}
-	
+
 	switch condition.Operator {
 	case ">":
 		return !currentTime.Before(t)
@@ -180,15 +180,15 @@ type EvaluationResult struct {
 // GeneratePolicy generates a zero trust policy.
 func GeneratePolicy(name string, conditions []Condition, actions []Action) Policy {
 	return Policy{
-		ID:        "policy-" + time.Now().Format("20060102150405"),
-		Name:      name,
-		Type:      TypeAccessPolicy,
-		Enabled:   true,
-		Priority:  100,
+		ID:         "policy-" + time.Now().Format("20060102150405"),
+		Name:       name,
+		Type:       TypeAccessPolicy,
+		Enabled:    true,
+		Priority:   100,
 		Conditions: conditions,
-		Actions:   actions,
-		CreatedAt: time.Now(),
-		UpdatedAt: time.Now(),
+		Actions:    actions,
+		CreatedAt:  time.Now(),
+		UpdatedAt:  time.Now(),
 	}
 }
 

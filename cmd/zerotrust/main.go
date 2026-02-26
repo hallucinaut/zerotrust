@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/hallucinaut/zerotrust/pkg/validate"
 	"github.com/hallucinaut/zerotrust/pkg/policy"
+	"github.com/hallucinaut/zerotrust/pkg/validate"
 )
 
 const version = "1.0.0"
@@ -37,7 +37,7 @@ func main() {
 			printUsage()
 			return
 		}
-	 managePolicy(os.Args[2])
+		managePolicy(os.Args[2])
 	case "check":
 		checkZeroTrust()
 	case "version":
@@ -67,7 +67,7 @@ Commands:
 Examples:
   zerotrust assess config.json
   zerotrust validate policies.yaml
-`,)
+`)
 }
 
 func assessZeroTrust(configFile string) {

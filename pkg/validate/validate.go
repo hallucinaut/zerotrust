@@ -2,8 +2,8 @@
 package validate
 
 import (
-	"math"
 	"fmt"
+	"math"
 	"time"
 )
 
@@ -11,20 +11,20 @@ import (
 type Principle string
 
 const (
-	PrincipleNeverTrust Principle = "never-trust"
-	PrincipleAlwaysVerify Principle = "always-verify"
-	PrincipleLeastPrivilege Principle = "least-privilege"
+	PrincipleNeverTrust        Principle = "never-trust"
+	PrincipleAlwaysVerify      Principle = "always-verify"
+	PrincipleLeastPrivilege    Principle = "least-privilege"
 	PrincipleMicrosegmentation Principle = "microsegmentation"
-	PrincipleAssumeBreach Principle = "assume-breach"
+	PrincipleAssumeBreach      Principle = "assume-breach"
 )
 
 // Control represents a security control.
 type Control struct {
-	Name        string
-	Type        string
-	Enabled     bool
+	Name          string
+	Type          string
+	Enabled       bool
 	Effectiveness float64
-	Description string
+	Description   string
 }
 
 // Assessment represents zero trust assessment.
@@ -39,10 +39,10 @@ type Assessment struct {
 
 // PrincipleCheck represents a principle check.
 type PrincipleCheck struct {
-	Principle    Principle
-	Score        float64
-	Status       string
-	Details      string
+	Principle Principle
+	Score     float64
+	Status    string
+	Details   string
 }
 
 // Validator validates zero trust architecture.
@@ -66,12 +66,12 @@ func NewValidator() *Validator {
 // Assess assesses zero trust posture.
 func (v *Validator) Assess(config *Config) *Assessment {
 	assessment := &Assessment{
-		AssessmentDate: time.Now(),
-		Principles:     make([]PrincipleCheck, 0),
-		Controls:       make([]Control, 0),
-		OverallScore:   0.0,
+		AssessmentDate:   time.Now(),
+		Principles:       make([]PrincipleCheck, 0),
+		Controls:         make([]Control, 0),
+		OverallScore:     0.0,
 		ComplianceStatus: "NON_COMPLIANT",
-		Recommendations: make([]string, 0),
+		Recommendations:  make([]string, 0),
 	}
 
 	// Check each principle
